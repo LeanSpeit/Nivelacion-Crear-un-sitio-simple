@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio web simple</title>
+    <style>
+        /* Estilos por defecto de la caja de texto */
+        #miCaja {
+            width: 300px;
+            height: 30px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mi sitio web</h1>
+
+    <!-- Caja de texto -->
+    <input type="text" id="miCaja" placeholder="Escribe algo aquí...">
+
+    <!-- Botón para cambiar el color -->
+    <button id="botonColores">Cambiar Color</button>
+
+    <script>
+        // Obtener los elementos
+        const caja = document.getElementById('miCaja');
+        const botonColores = document.getElementById('botonColores');
+
+        // Array de colores para alternar
+        const colores = [
+            { fondo: 'white', texto: 'black' },
+            { fondo: 'black', texto: 'white' },
+            { fondo: 'lightblue', texto: 'red' }
+        ];
+        
+        let indiceColor = 0;
+
+        // Función para cambiar los colores
+        botonColores.addEventListener('click', () => {
+            // Alternar el color de fondo y de texto de la caja
+            caja.style.backgroundColor = colores[indiceColor].fondo;
+            caja.style.color = colores[indiceColor].texto;
+            
+            // Actualizar el índice para el próximo cambio de color
+            indiceColor = (indiceColor + 1) % colores.length;
+        });
+
+        // Evento para detectar cuando se presiona la tecla Enter
+        caja.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                // Mostrar el texto en una ventana emergente (alert)
+                alert(caja.value);
+            }
+        });
+    </script>
+</body>
+</html>
